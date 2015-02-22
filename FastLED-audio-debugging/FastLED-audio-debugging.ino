@@ -33,25 +33,23 @@ void setup() {
   AudioMemory(12);
   myFFT.windowFunction(AudioWindowHanning1024);
 }
-byte j = 0;
+byte toggle = 0;
 void loop()
 {
-  byte i;
-  for (i=0;i<NUM_LEDS;i++){
 
-    if (j==0) {
-      leds[i]=CHSV(0,255,255);
+    if (toggle==0) {
+      fill_solid(leds,NUM_LEDS,CHSV(255,255,255));
     }
     else
     {
-      leds[i]=CHSV(0,255,0);
+      fill_solid(leds,NUM_LEDS,CHSV(255,255,0));
     }
-  }
+
   
   
   FastLED.show(); // display this frame
   FastLED.delay(1000 / FRAMES_PER_SECOND);
-  j=!j;
+  toggle = !toggle;
 }
 
 
